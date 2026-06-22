@@ -6,13 +6,35 @@
 
 ## English
 
-A lightweight desktop app for managing Clash Verge proxy services. Toggle proxy rules for apps like Qishui Music and Bilibili with one click.
+A lightweight desktop app for managing Clash Verge proxy rules. Toggle proxy rules for Chinese streaming services with one click.
+
+### Supported Services (16)
+
+| Category | Service | ID |
+|----------|---------|-----|
+| 🎵 Music | Qishui Music (汽水音乐) | `qishui` |
+| 🎵 Music | QQ Music (QQ音乐) | `qqmusic` |
+| 🎵 Music | NetEase Cloud Music (网易云音乐) | `netease` |
+| 🎵 Music | Kugou (酷狗音乐) | `kugou` |
+| 🎵 Music | Kuwo (酷我音乐) | `kuwo` |
+| 🎵 Music | Migu (咪咕音乐/视频) | `migu` |
+| 📺 Video | Bilibili (B站) | `bilibili` |
+| 📺 Video | Tencent Video (腾讯视频) | `tencentvideo` |
+| 📺 Video | iQiyi (爱奇艺) | `iqiyi` |
+| 📺 Video | Youku (优酷) | `youku` |
+| 📺 Video | Mango TV (芒果TV) | `mangotv` |
+| 📺 Video | Xigua Video (西瓜视频) | `xigua` |
+| 📱 Short Video / Live | Douyin (抖音) | `douyin` |
+| 📱 Short Video / Live | Huya (虎牙直播) | `huya` |
+| 📱 Short Video / Live | Douyu (斗鱼直播) | `douyu` |
+| 🎙️ Audio | Ximalaya (喜马拉雅) | `ximalaya` |
 
 ### Features
 
 - 🎵 **One-click toggle** — Enable/disable proxy rules instantly
 - 🖥️ **GUI interface** — No more editing config files manually
-- 🔧 **Multi-service support** — Manage Qishui, Bilibili, and custom services
+- 🔧 **16 services** — All major Chinese streaming platforms
+- 📂 **Category view** — Services grouped by type (Music, Video, Live, Audio)
 - 💾 **Persistent config** — Settings survive app restarts
 - ⚡ **Lightweight** — Built with Tauri 2, minimal resource usage
 
@@ -35,43 +57,24 @@ Grab the latest `.dmg` (macOS) or `.msi` (Windows) from [Releases](https://githu
 #### Build from source
 
 ```bash
-# Prerequisites: Node.js 18+, Rust, pnpm
+# Prerequisites: Node.js 18+, Rust
 
-# Install dependencies
 npm install
-
-# Development
 npm run tauri:dev
-
-# Build
 npm run tauri:build
 ```
 
-### Configuration
+### CLI Usage
 
-Config file: `~/.config/proxy-controller/services.json`
+You can also use the proxy toggle script directly:
 
-```json
-{
-  "services": [
-    {
-      "id": "qishui",
-      "name": "Qishui Music",
-      "icon": "🎵",
-      "scriptPath": "/path/to/qishui-proxy-control.sh",
-      "enabled": false
-    }
-  ]
-}
+```bash
+./scripts/proxy-toggle.sh <service-id> enable|disable
+
+# Examples:
+./scripts/proxy-toggle.sh qqmusic enable
+./scripts/proxy-toggle.sh bilibili disable
 ```
-
-#### Adding a new service
-
-1. Edit the config file
-2. Add a new service entry with `id`, `name`, `icon`, `scriptPath`
-3. Click refresh in the app or restart
-
-> **Note:** Proxy scripts must support `enable` and `disable` arguments.
 
 ### License
 
@@ -81,13 +84,35 @@ Config file: `~/.config/proxy-controller/services.json`
 
 ## 中文
 
-轻量级桌面代理管理工具，一键开关汽水音乐、B站等 Clash Verge 代理规则。
+轻量级桌面代理管理工具，一键开关国内主流流媒体的 Clash Verge 代理规则。
+
+### 支持的服务 (16个)
+
+| 分类 | 服务 | ID |
+|------|------|-----|
+| 🎵 音乐 | 汽水音乐 | `qishui` |
+| 🎵 音乐 | QQ音乐 | `qqmusic` |
+| 🎵 音乐 | 网易云音乐 | `netease` |
+| 🎵 音乐 | 酷狗音乐 | `kugou` |
+| 🎵 音乐 | 酷我音乐 | `kuwo` |
+| 🎵 音乐 | 咪咕音乐/视频 | `migu` |
+| 📺 视频 | B站 | `bilibili` |
+| 📺 视频 | 腾讯视频 | `tencentvideo` |
+| 📺 视频 | 爱奇艺 | `iqiyi` |
+| 📺 视频 | 优酷 | `youku` |
+| 📺 视频 | 芒果TV | `mangotv` |
+| 📺 视频 | 西瓜视频 | `xigua` |
+| 📱 短视频/直播 | 抖音 | `douyin` |
+| 📱 短视频/直播 | 虎牙直播 | `huya` |
+| 📱 短视频/直播 | 斗鱼直播 | `douyu` |
+| 🎙️ 有声 | 喜马拉雅 | `ximalaya` |
 
 ### 功能特性
 
 - 🎵 **一键开关** — 即时启用/禁用代理规则
 - 🖥️ **可视化界面** — 告别手动编辑配置文件
-- 🔧 **多服务支持** — 管理汽水音乐、B站及自定义服务
+- 🔧 **16 个服务** — 覆盖国内主流流媒体平台
+- 📂 **分类视图** — 按音乐、视频、直播、有声分类展示
 - 💾 **配置持久化** — 设置重启后保留
 - ⚡ **轻量高效** — 基于 Tauri 2，资源占用极低
 
@@ -110,43 +135,32 @@ Config file: `~/.config/proxy-controller/services.json`
 #### 从源码构建
 
 ```bash
-# 前置条件: Node.js 18+, Rust, pnpm
+# 前置条件: Node.js 18+, Rust
 
-# 安装依赖
 npm install
-
-# 开发模式
 npm run tauri:dev
-
-# 构建打包
 npm run tauri:build
 ```
 
-### 配置说明
+### 命令行使用
 
-配置文件：`~/.config/proxy-controller/services.json`
+也可以直接使用代理切换脚本：
 
-```json
-{
-  "services": [
-    {
-      "id": "qishui",
-      "name": "汽水音乐",
-      "icon": "🎵",
-      "scriptPath": "/path/to/qishui-proxy-control.sh",
-      "enabled": false
-    }
-  ]
-}
+```bash
+./scripts/proxy-toggle.sh <服务ID> enable|disable
+
+# 示例：
+./scripts/proxy-toggle.sh qqmusic enable
+./scripts/proxy-toggle.sh bilibili disable
 ```
 
-#### 添加新服务
+### 工作原理
 
-1. 编辑配置文件
-2. 添加新的服务条目（包含 `id`、`name`、`icon`、`scriptPath`）
-3. 点击应用中的刷新按钮或重启应用
+每个服务的代理规则包含：
+- **PROCESS-NAME** 规则 — 匹配客户端进程名
+- **DOMAIN-SUFFIX** 规则 — 匹配服务域名和 CDN 节点
 
-> **注意：** 代理脚本需支持 `enable` 和 `disable` 两个参数。
+脚本会自动修改 Clash Verge 的配置文件并热重载内核，无需重启 Clash Verge。
 
 ### 许可证
 

@@ -4,8 +4,8 @@
       <div class="brand-lockup">
         <img class="app-logo" src="/logo.png" alt="" aria-hidden="true" />
         <div class="brand-copy">
-          <h1>代理控制器</h1>
-          <p class="subtitle">Clash Verge 代理一键管理</p>
+          <h1>Clash Proxy Manager</h1>
+          <p class="subtitle">Clash Verge 代理规则管理 · {{ services.length }} 个服务</p>
         </div>
       </div>
     </header>
@@ -21,13 +21,18 @@
         <p class="hint">请编辑配置文件添加代理服务</p>
       </div>
 
-      <div v-else class="services-grid">
-        <ProxyCard
-          v-for="service in services"
-          :key="service.id"
-          :service="service"
-          @update="handleServiceUpdate"
-        />
+      <div v-else class="services-by-category">
+        <div v-for="group in groupedServices" :key="group.category" class="category-group">
+          <h2 class="category-title">{{ group.category }}</h2>
+          <div class="services-grid">
+            <ProxyCard
+              v-for="service in group.services"
+              :key="service.id"
+              :service="service"
+              @update="handleServiceUpdate"
+            />
+          </div>
+        </div>
       </div>
     </main>
 
@@ -44,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { Loading, Refresh } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import ProxyCard from "@/components/ProxyCard.vue";
@@ -53,6 +58,19 @@ import { loadServices } from "@/services/proxyService";
 
 const services = ref<ProxyService[]>([]);
 const loading = ref(true);
+
+const groupedServices = computed(() => {
+  const groups: Record<string, ProxyService[]> = {};
+  for (const s of services.value) {
+    const cat = s.category || "其他";
+    if (!groups[cat]) groups[cat] = [];
+    groups[cat].push(s);
+  }
+  return Object.entries(groups).map(([category, svcs]) => ({
+    category,
+    services: svcs,
+  }));
+});
 
 async function refreshServices() {
   loading.value = true;
@@ -155,12 +173,29 @@ onMounted(() => {
   opacity: 0.7;
 }
 
+.services-by-category {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.category-group {
+  margin-bottom: 24px;
+}
+
+.category-title {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--el-text-color-secondary);
+  padding-left: 4px;
+  border-left: 3px solid var(--el-color-primary);
+  padding-left: 10px;
+}
+
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
-  max-width: 800px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
 }
 
 .app-footer {
