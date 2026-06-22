@@ -3,8 +3,9 @@ import { exists, mkdir, readTextFile, writeTextFile } from "@tauri-apps/plugin-f
 import { homeDir, join } from "@tauri-apps/api/path";
 import type { ProxyConfig, ProxyService } from "@/types";
 
-// 默认代理脚本路径（通用脚本）
-const SCRIPT_PATH = "/Applications/Clash Proxy Manager.app/Contents/Resources/scripts/proxy-toggle.sh";
+// 默认代理脚本路径（打包后的资源路径）
+// macOS: Clash Proxy Manager.app/Contents/Resources/_up_/scripts/proxy-toggle.sh
+const SCRIPT_PATH = "/Applications/Clash Proxy Manager.app/Contents/Resources/_up_/scripts/proxy-toggle.sh";
 
 // 默认配置（首次启动时使用）
 const DEFAULT_CONFIG: ProxyConfig = {
