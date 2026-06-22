@@ -1,4 +1,4 @@
-# Proxy Controller
+# Clash Proxy Manager
 
 [English](#english) | [中文](#中文)
 
@@ -30,7 +30,7 @@ A lightweight desktop app for managing Clash Verge proxy services. Toggle proxy 
 
 #### Download
 
-Grab the latest `.dmg` (macOS) or `.msi` (Windows) from [Releases](https://github.com/gmnoah/qishui-proxy-controller/releases).
+Grab the latest `.dmg` (macOS) or `.msi` (Windows) from [Releases](https://github.com/gmnoah/clash-proxy-manager/releases).
 
 #### Build from source
 
@@ -105,7 +105,7 @@ Config file: `~/.config/proxy-controller/services.json`
 
 #### 下载
 
-从 [Releases](https://github.com/gmnoah/qishui-proxy-controller/releases) 下载最新 `.dmg`（macOS）或 `.msi`（Windows）。
+从 [Releases](https://github.com/gmnoah/clash-proxy-manager/releases) 下载最新 `.dmg`（macOS）或 `.msi`（Windows）。
 
 #### 从源码构建
 

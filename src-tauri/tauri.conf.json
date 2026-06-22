@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "代理控制器",
+  "productName": "Clash Proxy Manager",
   "version": "0.1.0",
-  "identifier": "com.noah.proxycontroller",
+  "identifier": "com.noah.clash-proxy-manager",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1650",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "代理控制器",
+        "title": "Clash Proxy Manager",
         "width": 720,
         "height": 520,
         "resizable": true,

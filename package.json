@@ -1,8 +1,8 @@
 {
-  "name": "qishui-proxy-controller",
+  "name": "clash-proxy-manager",
   "private": true,
   "version": "0.1.0",
-  "description": "Clash Verge 代理控制器 - 一键开关汽水音乐、B站等代理服务",
+  "description": "Clash Verge Proxy Manager - Toggle proxy rules for Qishui Music, Bilibili with one click",
   "type": "module",
   "scripts": {
     "dev": "vite --port 1650 --strictPort",
