@@ -10,8 +10,6 @@ export interface ProxyService {
   icon: string;
   /** 分类 */
   category?: string;
-  /** 控制脚本路径 */
-  scriptPath: string;
   /** 当前是否启用 */
   enabled: boolean;
 }
